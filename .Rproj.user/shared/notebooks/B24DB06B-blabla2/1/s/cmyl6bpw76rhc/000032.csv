@@ -1,7 +1,0 @@
-"0","g18<-effect_plot(fit2, pred=Note,interval = TRUE  ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de la note"",y=""taux d'occupation"")"
-"2","Confidence intervals for merMod models is an experimental feature. The intervals reflect only the variance of the fixed effects, not the random effects.
-"
-"0","g19<-effect_plot(fit2, pred=Nombre,interval = TRUE ,data=df)+geom_line(color=""gold3"", size=2)+labs(title=""Effet du nombre de trajets"",y=""taux d'occupation"")"
-"2","Confidence intervals for merMod models is an experimental feature. The intervals reflect only the variance of the fixed effects, not the random effects.
-"
-"0","grid.arrange(g18,g19,ncol=2)"

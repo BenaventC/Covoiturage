@@ -1,3 +1,0 @@
-"0",""
-"0","g20<-interact_plot(fit2,pred =Nombre , modx =Note ,interval = TRUE ,data=df) +scale_x_log10()+geom_line(color=""gold3"", size=2)+labs(title=""Effets d'interaction Nombre X Note"",y=""taux d'occupation"")"
-"0","g20"

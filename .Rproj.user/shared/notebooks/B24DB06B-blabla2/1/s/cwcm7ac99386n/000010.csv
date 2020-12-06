@@ -1,1 +1,0 @@
-"0","ggplot(df, aes(x=Occup))+geom_bar(fill=""gold2"")+theme_bw()  +labs(title=""Distribution des taux d'occupation"")"

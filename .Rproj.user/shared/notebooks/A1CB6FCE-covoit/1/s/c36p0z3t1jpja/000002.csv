@@ -1,0 +1,2 @@
+"0",""
+"0","# ggplot(df, aes(x=Marque))+geom_bar(fill=""Chartreuse4"")+theme_bw() +coord_flip()"

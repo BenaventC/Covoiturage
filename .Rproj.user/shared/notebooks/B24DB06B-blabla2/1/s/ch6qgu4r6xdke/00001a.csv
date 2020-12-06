@@ -1,5 +1,0 @@
-"0","g10<-effect_plot(fit1, pred=Age,interval = TRUE ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de l'âge sur le taux d'occupation"")"
-"0","g11<-effect_plot(fit1, pred=Statut,interval = TRUE ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de l'âge sur le taux d'occupation"")"
-"0","g12<-effect_plot(fit1, pred=Autoroute,interval = TRUE  ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de l'autoroute sur le taux d'occupation"")"
-"0","g13<-effect_plot(fit1, pred=Distance,interval = TRUE  ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de la distance sur le taux d'occupation"")"
-"0","grid.arrange(g10,g11,g12,g13,ncol=2)"

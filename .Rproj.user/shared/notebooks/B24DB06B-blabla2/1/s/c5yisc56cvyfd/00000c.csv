@@ -1,6 +1,0 @@
-"0","df$prix_km<-df$Prix/df$Distance"
-"0",""
-"0","g22<-ggplot(df, aes(x=prix_km))+geom_histogram(fill=""firebrick3"", binwidth = 0.005)+theme_bw()  +labs(title = ""Distribution des prix"")+xlim(0,0.15)"
-"0","g23<-ggplot(df, aes(x=Distance, y=prix_km))+geom_point(color=""firebrick3"")+theme_bw() +geom_smooth(method=""gam"")+scale_x_log10()+ylim(0,0.15)"
-"0","grid.arrange(g22,g23, ncol=2)"
-"0",""

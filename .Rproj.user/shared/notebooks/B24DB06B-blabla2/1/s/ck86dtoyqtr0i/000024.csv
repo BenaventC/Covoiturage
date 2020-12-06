@@ -1,7 +1,0 @@
-"0","foo<-df %>% group_by(Statut)%>%summarise(Note=mean(Note,na.rm=TRUE),Nombre=mean(Nombre,na.rm=TRUE))"
-"0","foo<-melt(foo)"
-"2","Using Statut as id variables
-"
-"0","ggplot(foo, aes(x=Statut, y=value,group=variable))+geom_line(aes(color=variable), size=2)+"
-"0","  theme_bw() +"
-"0","  coord_flip()+facet_wrap(vars(variable),scales =""free"")+  labs(title = ""Profil des  statuts de conducteur"")+scale_color_manual(values=c(""coral1"", ""skyblue3""))+ guides(color = FALSE, size = FALSE)"
