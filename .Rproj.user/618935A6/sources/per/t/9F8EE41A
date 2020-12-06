@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1607242270560.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "9F8EE41A",
+    "lastKnownWriteTime" : 14918392812732472,
+    "last_content_update" : 1607242270560,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "428D60D",
+        "caption" : "coef",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=coef&cache_key=428D60D",
+        "displayedObservations" : "35",
+        "environment" : "",
+        "expression" : "coef",
+        "object" : "coef",
+        "preview" : "0",
+        "totalObservations" : "35",
+        "variables" : "3"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 3,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

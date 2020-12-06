@@ -1,0 +1,9 @@
+{
+    "path" : "~/AtelierR/Blablacar/blablacar/Covoiturage",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

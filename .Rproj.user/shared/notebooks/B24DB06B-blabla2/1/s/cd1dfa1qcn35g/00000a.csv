@@ -1,0 +1,48 @@
+"0","df <- read_delim(""Blablav2.csv"", "";"", escape_double = FALSE, trim_ws = TRUE)"
+"2","Missing column names filled in: 'X19' [19], 'X20' [20], 'X21' [21], 'X22' [22]"
+"2","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Num = [32mcol_double()[39m,
+  Distance = [32mcol_double()[39m,
+  `Temps mn` = [32mcol_double()[39m,
+  Nombre = [32mcol_double()[39m,
+  `Places Restantes` = [32mcol_double()[39m,
+  Age = [32mcol_double()[39m,
+  Note = [32mcol_double()[39m,
+  Prix = [32mcol_double()[39m,
+  X21 = [33mcol_logical()[39m,
+  X22 = [33mcol_logical()[39m
+)
+"
+"2","See spec(...) for full column specifications.
+"
+"2","13 parsing failures.
+ row col           expected                                         actual           file
+1644 X21 1/0/T/F/TRUE/FALSE Europe, Aix-en-Prov : voir avec le conducteur  'Blablav2.csv'
+1644 X22 1/0/T/F/TRUE/FALSE Depart pile a l'heure                          'Blablav2.csv'
+2386 Age a double           ""32 - <strong class=""""green"""">Helper</strong>"" 'Blablav2.csv'
+2788 Age a double           ""36 - <strong class=""""green"""">Helper</strong>"" 'Blablav2.csv'
+3561 Age a double           ""28 - <strong class=""""green"""">Helper</strong>"" 'Blablav2.csv'
+.... ... .................. .............................................. ..............
+See problems(...) for more details.
+"
+"0","df<- df%>% rename(TauxOccup=`Places Restantes`, "
+"0","                  Depart=`Ville Depart Capture`,"
+"0","                  Arrivee=`Ville Arrivee Capture`,"
+"0","                  Flex=`Flexibilite Horaire`"
+"0",""
+"0","                  )"
+"0","df<-df %>% filter( Distance<1000)"
+"0",""
+"0","#on recode les places restantes par une approximation du taux de réservation"
+"0","df$Occup<- NA"
+"0","df$Occup[df$TauxOccup==0]<-1"
+"0","df$Occup[df$TauxOccup==1]<-.75"
+"0","df$Occup[df$TauxOccup==2]<-.50"
+"0","df$Occup[df$TauxOccup==3]<-.25"
+"0","df$Occup[df$TauxOccup==4]<-0"
+"0","df$Occup[df$TauxOccup>=4]<-0"
+"0",""
+"0","#l'expérience peut se capter par le nombre de voyages"
+"0","df$Nombre[is.na(df$Nombre)]<-0"
