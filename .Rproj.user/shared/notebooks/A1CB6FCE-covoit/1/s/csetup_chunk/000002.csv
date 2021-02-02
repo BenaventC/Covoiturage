@@ -1,24 +1,11 @@
 "0","knitr::opts_chunk$set(echo = TRUE,include=TRUE, echo=TRUE, message=FALSE, warning=FALSE)"
-"2","Warning messages:
-"
-"2","1: "
-"2","In class(object) <- ""environment"" :"
-"2","
- "
-"2"," class(x) changÃ©e vers ""environment"" et l'attribut devient NULL ; le rÃ©sultat ne sera plus un objet S4
-"
-"2","2: "
-"2","In class(object) <- ""environment"" :"
-"2","
- "
-"2"," class(x) changÃ©e vers ""environment"" et l'attribut devient NULL ; le rÃ©sultat ne sera plus un objet S4
-"
 "0","library(readr)"
 "0","library(tidyverse)"
 "2","le package ‘tidyverse’ a été compilé avec la version R 4.0.2"
-"2","Registered S3 method overwritten by 'dplyr':
-  method           from
-  print.rowwise_df     
+"2","Registered S3 methods overwritten by 'broom':
+  method            from  
+  tidy.glht         jtools
+  tidy.summary.glht jtools
 "
 "2","Registered S3 methods overwritten by 'dbplyr':
   method         from

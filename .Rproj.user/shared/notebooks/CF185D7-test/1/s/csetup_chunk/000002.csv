@@ -1,0 +1,30 @@
+"0","df <- read_delim(""covoit.csv"", "";"", escape_double = FALSE,   trim_ws = TRUE) #je lis le fichier 
+"
+"2","Missing column names filled in: 'X19' [19], 'X20' [20], 'X21' [21], 'X22' [22]"
+"2","Parsed with column specification:
+cols(
+  .default = col_character(),
+  Num = [32mcol_double()[39m,
+  Distance = [32mcol_double()[39m,
+  `Temps mn` = [32mcol_double()[39m,
+  Nombre = [32mcol_double()[39m,
+  `Places Restantes` = [32mcol_double()[39m,
+  Age = [32mcol_double()[39m,
+  Note = [32mcol_double()[39m,
+  Prix = [32mcol_double()[39m,
+  X21 = [33mcol_logical()[39m,
+  X22 = [33mcol_logical()[39m
+)
+"
+"2","See spec(...) for full column specifications.
+"
+"2","13 parsing failures.
+ row col           expected                                         actual         file
+1644 X21 1/0/T/F/TRUE/FALSE Europe, Aix-en-Prov : voir avec le conducteur  'covoit.csv'
+1644 X22 1/0/T/F/TRUE/FALSE Depart pile a l'heure                          'covoit.csv'
+2386 Age a double           ""32 - <strong class=""""green"""">Helper</strong>"" 'covoit.csv'
+2788 Age a double           ""36 - <strong class=""""green"""">Helper</strong>"" 'covoit.csv'
+3561 Age a double           ""28 - <strong class=""""green"""">Helper</strong>"" 'covoit.csv'
+.... ... .................. .............................................. ............
+See problems(...) for more details.
+"
