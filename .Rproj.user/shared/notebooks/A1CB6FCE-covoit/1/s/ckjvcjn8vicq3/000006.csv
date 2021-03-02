@@ -1,0 +1,6 @@
+"0","trajet<-table(df$Depart, df$Arrivee)"
+"0",""
+"0","df$trajet<-paste0(df$Depart,""-"",df$Arrivee)"
+"0","foo<-df %>% mutate(n=1)%>%group_by(trajet)%>%summarise(n=sum(n))%>%filter(n>0)"
+"0",""
+"0","ggplot(foo,aes(x=reorder(trajet,n), y=n))+geom_bar(stat=""identity"", fill=""coral1"")+coord_flip()+theme_bw()+labs(title=""Trajets les plus fréquents"")"

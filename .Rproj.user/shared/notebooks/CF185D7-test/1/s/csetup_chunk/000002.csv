@@ -1,5 +1,8 @@
-"0","df <- read_delim(""covoit.csv"", "";"", escape_double = FALSE,   trim_ws = TRUE) #je lis le fichier 
-"
+"0","knitr::opts_chunk$set(echo = TRUE,message=FALSE, warning=FALSE)"
+"0","library(tidyverse) #on charge ggplot et dplyr nos outils de base"
+"0","library(jtools) # pour avoir des graph des modeles de régression"
+"0",""
+"0","df <- read_delim(""covoit.csv"", "";"", escape_double = FALSE,   trim_ws = TRUE) #je lis le fichier "
 "2","Missing column names filled in: 'X19' [19], 'X20' [20], 'X21' [21], 'X22' [22]"
 "2","Parsed with column specification:
 cols(

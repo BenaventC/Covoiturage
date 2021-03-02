@@ -12,9 +12,8 @@ output:
 
 ```{r setup}
 knitr::opts_chunk$set(echo = TRUE,include=TRUE, echo=TRUE, message=FALSE, warning=FALSE)
-library(readr)
 library(tidyverse)
-library(reshape2)
+library(reshape2) #manipuler les fichiers 
 library(gridExtra)
 library(lme4)
 library(jtools)
@@ -90,10 +89,22 @@ ggplot(df, aes(x=Distance))+geom_histogram(fill="Chartreuse4",binwidth = 20)+the
 On distingue deux populations en terme d'âge, une en dessous de la trentaine, l'autre de 40 à 50 ans. On Jette un coup d'oeil ensuite sur la relation entre l'âge et la note qui culmine à 30 ans et baisse avec les décades (F=59.3). Est-ce l'effet d'une inadéquation des âges? La demande est-elle plus jeune que l'offre? Celà crée-t-il un biais systématique d'évaluation? 
 
 ```{r age1}
-g2<-ggplot(df, aes(x=Age))+geom_histogram(fill="Chartreuse4")+theme_bw() +scale_x_log10() +labs(title="Distribution de l'âge")
+g2<-ggplot(df, aes(x=Age))+
+  geom_histogram(fill="Chartreuse4")+theme_bw() +
+  scale_x_log10() +labs(title="Distribution de l'âge")
+
+
 df$Age2<-(round(df$Age/10,0))
-foo<-df %>% group_by(Age2)%>%summarise(Note=mean(Note, na.rm=TRUE)) %>% filter(Age2<9) 
-g3<-ggplot(foo, aes(x=Age2, y=Note, group=1))+geom_line(stat="identity",color="Chartreuse4",size =2)+theme_bw()+labs(title="Note en fonction de l'âge")
+
+foo<-df %>% group_by(Age2)%>%
+  summarise(Note=mean(Note, na.rm=TRUE)) %>% 
+  filter(Age2<9) 
+
+
+g3<-ggplot(foo, aes(x=Age2, y=Note, group=1))+
+  geom_line(stat="identity",color="Chartreuse4",size =2)+
+  theme_bw()+
+  labs(title="Note en fonction de l'âge")
 
 grid.arrange(g2,g3,ncol=2)
 fit<-lm(Note~Age2, df)
@@ -137,11 +148,20 @@ ggplot(df, aes(x=Statut))+
   geom_bar(fill="Chartreuse4")+theme_bw() +
   coord_flip()+
   labs(title = "Statuts de conducteur")
-foo<-df %>% group_by(Statut)%>%summarise(Note=mean(Note,na.rm=TRUE),Nombre=mean(Nombre,na.rm=TRUE))
+
+
+foo<-df %>% 
+  group_by(Statut)%>%
+  summarise(Note=mean(Note,na.rm=TRUE),Nombre=mean(Nombre,na.rm=TRUE))
+
 foo<-melt(foo)
-ggplot(foo, aes(x=Statut, y=value,group=variable))+geom_line(aes(color=variable), size=2)+
+
+ggplot(foo, aes(x=Statut, y=value,group=variable))+
+  geom_line(aes(color=variable), size=2)+
   theme_bw() +
-  coord_flip()+facet_wrap(vars(variable),scales ="free")+  labs(title = "Profil des  statuts de conducteur")+scale_color_manual(values=c("coral1", "skyblue3"))+ guides(color = FALSE, size = FALSE)
+  coord_flip()+
+  facet_wrap(vars(variable),scales ="free")+  
+  labs(title = "Profil des  statuts de conducteur")+scale_color_manual(values=c("coral1", "skyblue3"))
 
 
 
@@ -171,7 +191,10 @@ ggplot(df, aes(x=Nombre))+geom_histogram(fill="skyblue1", binwidth = 5)+theme_bw
 Note et expérience sont-ils corrélés? Rien de très probant même s'il semble que la note s'accroisse légèrement avec le nombre de voyages réalisés. 
 
 ```{r note4}
-ggplot(df, aes(x=Nombre, y=Note))+geom_point(color="Chartreuse3",alpha=0.3)+theme_bw() +geom_smooth()+xlim(0,500)+labs(title="Corrélation nombre de trajets et note moyenne du conducteur")
+ggplot(df, aes(x=Nombre, y=Note))+
+  geom_point(color="Chartreuse3",alpha=0.3)+
+  theme_bw() +geom_smooth()+
+  xlim(0,500)+labs(title="Corrélation nombre de trajets et note moyenne du conducteur")
 
 ```
 
@@ -205,7 +228,7 @@ Le modèle précédent est basique, nous allons le reformuler. Nous écartons le
 Les deux modèles sont représentés dans un diagramme de paramètres qui permet de mieux illustrer les résultats qu'un tableau classique de paramètres de régression. On emploie `jtools` pour les représentations graphiques.
 
 ```{r modO2a, fig.width=9}
-fit1<-lm(Occup~Age+Statut+Distance+Prix+Autoroute+log(Nombre+1)+Note:log(Nombre+1), data=df)
+fit1<-lm(Occup~Age+Distance+Prix+Flex+Detour+Autoroute+Statut+log(Nombre+1)+Note:log(Nombre+1), data=df)
 summ(fit1)
 plot_summs(fit0,fit1, plot.distributions = TRUE,scale = FALSE)
 ```
@@ -333,7 +356,8 @@ Les conducteurs valorisent leurs réputation, mais les plus expérimentés ont d
 fit4<-lmer(prix_km~Distance+Autoroute+Age+Note+log(Nombre+1):Note+(1|trajet), data=df)
 summary(fit4)
 
-interact_plot(fit4,pred =Note , modx =Nombre ,interval = TRUE ,data=df) +scale_x_log10()+geom_line(color="firebrick",size=2)+labs(title="Interaction  du nombre X note")
+interact_plot(fit4,pred =Note , modx =Nombre ,interval = TRUE ,data=df) +scale_x_log10()+geom_line(color="firebrick",size=2)+
+  labs(title="Interaction  du nombre X note")
 
 ```
 

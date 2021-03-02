@@ -1,5 +1,0 @@
-"0","df$Statut<-as.factor(df$Statut)"
-"0","ggplot(df, aes(x=Statut))+"
-"0","  geom_bar(fill=""Chartreuse4"")+theme_bw() +"
-"0","  coord_flip()+"
-"0","  labs(title = ""Statuts de conducteur"")"

@@ -1,2 +1,3 @@
+"0","mean<-round(mean(df$Nombre,na.rm=TRUE),2)"
 "0",""
-"0",""
+"0","ggplot(df, aes(x=Nombre))+geom_histogram(fill=""skyblue1"", binwidth = 5)+theme_bw()+labs(title = ""Distribution du nombre de trajets réalisés"", subtitle =paste0(""Moyenne="", mean))+xlim(0,300)"

@@ -1,0 +1,116 @@
+---
+title: "DataSciences - Mon premier graphique avec r"
+author: "cb"
+date: "26/01/2021"
+output: html_document
+---
+
+
+## Chargement des packages et des données
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,message=FALSE, warning=FALSE)
+library(tidyverse) #on charge ggplot et dplyr nos outils de base
+library(jtools) # pour avoir des graph des modeles de régression
+
+df <- read_delim("covoit.csv", ";", escape_double = FALSE,   trim_ws = TRUE) #je lis le fichier 
+
+```
+
+## Mon premier graphique
+
+Dans le chunck suivant je vais coder mon premier graphique.
+
+```{r plot1}
+#on remplace des valeurs manquante de la variable nombre de voyage par 0
+df<- df %>% 
+  mutate(Nombre=ifelse(is.na(Nombre),0,Nombre)) %>% filter(!is.na(Statut))
+
+#On calcule la moyenne et la mediane
+x<-round(median(df$Nombre, na.rm = TRUE),2)
+y<-round(mean(df$Nombre, na.rm = TRUE),2)
+
+z<-round(sd(df$Nombre),2)
+
+
+ggplot(data = df, aes(x=Nombre+1))+
+  geom_histogram(fill="grey60")+
+  theme_bw()+
+  xlim(-1,200) +
+  labs(title="Distribution de l'expérience des offreurs", 
+       subtitle=paste0("Moyenne: ",y, ". Mediane: ",x, " Ecart-type:", z), 
+       caption="Source : scrapping covoiturage ",
+       x= "Nombre de voyages déjà proposés par l'offreur",y="Fréquence")+ 
+  geom_vline(xintercept = x, size=1, color="red")
+ggsave("mon1ggplot.jpeg",plot=last_plot(),width = 18, height = 14, units = "cm")
+```
+
+## Mon second graphique
+
+On va représenter le nombre de voyages moyen par statut ainsi que sa variabilité.
+
+Examinons d'abord la distribution des statuts. (0n ne connait pas a priori les règles d'attribution)
+
+```{r moyenne, echo=FALSE}
+
+ggplot(df,aes(x=Statut))+
+  geom_bar(fill="gold3", aes(y = (..count..)/sum(..count..)))+
+  theme_bw()+  coord_flip()+
+  labs(title="Répartition des offres par statut du conducteur",y="proportion")+
+  scale_y_continuous(labels=scales::percent)
+
+
+
+ggplot(df,aes(x=Statut,y=Nombre+1))+
+  geom_boxplot(fill="gold3")+
+  coord_flip()+
+  theme_bw()+ 
+  scale_y_log10()
+
+  
+```
+
+
+```{r moyenne, echo=FALSE}
+
+foo <-df %>% 
+  group_by(Statut)%>%
+  summarise(Voyage_mean=mean(Nombre),
+            Voyage_sd=sd(Nombre),
+            n=n()) %>%
+  filter(!is.na(Statut))
+
+
+ggplot(foo,aes(x=reorder(Statut,Voyage_mean), y=Voyage_mean))+
+  geom_bar(stat="identity", fill="firebrick3")+
+  geom_errorbar(aes(ymin=Voyage_mean-2*Voyage_sd/sqrt(n), ymax=Voyage_mean+2*Voyage_sd/sqrt(n)),size=1, width=.3,position=position_dodge(.9))+ 
+  labs(title="Nombre moyen de voyages par statut", 
+       caption="source: blablacar scrapping 2017",
+       x= "Statut",y="Nombre moyen de voyages")+
+  coord_flip()+
+  theme_bw()
+ggsave("mon2ggplot.jpeg",plot=last_plot(),width = 18, height = 14, units = "cm")
+
+```
+
+## et un peu d'économétrie
+
+on teste un modèle linéaire classique, qui correspond à une analyse de variance. Puis un modèle spécifique de comptage, poisson.
+
+```{r anova, echo=FALSE}
+fit<-lm(Nombre ~Statut+Note, data=df)
+anova(fit)
+summary(fit)
+
+export_summs(fit)
+plot_summs(fit, robust = "HC3")
+
+effect_plot(fit, pred=Statut)
+
+fit<-glm(formula = Nombre ~ Statut, family = "poisson", data = df)
+summ(fit)
+export_summs(fit)
+effect_plot(fit, pred=Statut)
+
+```
+

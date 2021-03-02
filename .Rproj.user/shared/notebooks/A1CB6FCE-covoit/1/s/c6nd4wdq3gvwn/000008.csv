@@ -1,0 +1,4 @@
+"0",""
+"0","g14<-effect_plot(fit1, pred=Note,interval = TRUE ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet de la note sur le taux d'occupation"")"
+"0","g15<-effect_plot(fit1, pred=Nombre,interval = TRUE  ,data=df)+geom_line(color=""gold3"",size=2)+labs(title=""Effet du nombre de trajets sur le taux d'occupation"")"
+"0","grid.arrange(g14,g15,ncol=2)"

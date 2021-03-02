@@ -1,4 +1,0 @@
-"0","g20<-ggplot(df, aes(x=Prix))+geom_bar(fill=""firebrick2"")+theme_bw()  +labs(title = ""Distribution des prix"")"
-"0","g21<-ggplot(df, aes(x=Distance, y=Prix))+geom_point(color=""firebrick2"", alpha =0.5)+theme_bw() +geom_smooth(method=""gam"")+scale_x_log10()+labs(title = ""Corrélation des distances et des prix"")"
-"0","library(gridExtra)"
-"0","grid.arrange(g20,g21, ncol=2)"

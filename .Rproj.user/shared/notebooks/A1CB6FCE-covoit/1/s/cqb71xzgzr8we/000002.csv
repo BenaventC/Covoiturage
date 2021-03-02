@@ -1,3 +1,0 @@
-"0",""
-"0","library(interactions)"
-"0","interact_plot(fit1,pred =Nombre , modx =Note ,interval = TRUE ,data=df) +scale_x_log10()+geom_line(color=""gold3"",size=2)+labs(title=""Interaction Note X Nombre"")"

@@ -1,0 +1,5 @@
+"0","mean<-round(mean(df$Note,na.rm=TRUE),2)"
+"0","ggplot(df, aes(x=Note))+geom_histogram(fill=""coral2"",binwidth = .1)+"
+"0","  theme_bw() +"
+"0","  labs(title = ""Distribution des notes des conducteurs"", subtitle =paste0(""Moyenne="", mean))"
+"0",""

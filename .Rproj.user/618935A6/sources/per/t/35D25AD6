@@ -1,0 +1,26 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1607247621818.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "849644028",
+    "id" : "35D25AD6",
+    "lastKnownWriteTime" : 1612287314,
+    "last_content_update" : 1612287314285,
+    "path" : "~/AtelierR/Blablacar/blablacar/Covoiturage/covoit.Rmd",
+    "project_path" : "covoit.Rmd",
+    "properties" : {
+        "cursorPosition" : "359,2",
+        "last_setup_crc32" : "241C3DB88cb0c6a5",
+        "scrollLine" : "351"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 7,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

@@ -1,6 +1,0 @@
-"0",""
-"0","df$Flex[df$Flex!=""Depart pile a l'heure"" & df$Flex!=""Pas d'indication""]<-""Voir avec le conducteur"""
-"0","df$Flex[is.na(df$Flex)]<-""Pas d'indication"""
-"0",""
-"0","ggplot(df, aes(x=Flex))+geom_bar(fill=""Chartreuse4"")+theme_bw() +coord_flip()+labs(title=""Flexibilité de l'horaire"")"
-"0",""

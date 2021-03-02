@@ -11,6 +11,8 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE,message=FALSE, warning=FALSE)
 library(tidyverse) #on charge ggplot et dplyr nos outils de base
+library(jtools) # pour avoir des graph des modeles de régression
+
 df <- read_delim("covoit.csv", ";", escape_double = FALSE,   trim_ws = TRUE) #je lis le fichier 
 
 ```
@@ -89,20 +91,20 @@ ggplot(foo,aes(x=reorder(Statut,Voyage_mean), y=Voyage_mean))+
   theme_bw()
 ggsave("mon2ggplot.jpeg",plot=last_plot(),width = 18, height = 14, units = "cm")
 
-
-
 ```
-##et un peu d'économétrie
 
-on teste un modèle linéaire classique, qui correspond à une analyse de variance. Puis un modèle spécifique de comptge, poisson.
+## et un peu d'économétrie
+
+on teste un modèle linéaire classique, qui correspond à une analyse de variance. Puis un modèle spécifique de comptage, poisson.
 
 ```{r anova, echo=FALSE}
-library(jtools)
-fit<-lm(Nombre ~Statut, data=df)
+fit<-lm(Nombre ~Statut+Note, data=df)
 anova(fit)
 summary(fit)
-summ(fit)
+
 export_summs(fit)
+plot_summs(fit, robust = "HC3")
+
 effect_plot(fit, pred=Statut)
 
 fit<-glm(formula = Nombre ~ Statut, family = "poisson", data = df)
@@ -110,12 +112,5 @@ summ(fit)
 export_summs(fit)
 effect_plot(fit, pred=Statut)
 
-
 ```
 
-```{r scatter, echo=FALSE}
-
-p <- ggplot(mtcars, aes(mpg, wt, shape = factor(cyl)))
-p + geom_point(aes(colour = factor(cyl)), size = 4) +
-  geom_point(colour = "grey90", size = 1.5)
-```
