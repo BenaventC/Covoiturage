@@ -1,5 +1,0 @@
-"0",""
-"0","df$Detour[df$Detour==""De 30 minutes max""]<-""Plus de 15 mn"""
-"0","df$Detour[df$Detour==""Autant que possible""]<-""Plus de 15 mn"""
-"0","ggplot(df, aes(x=Detour))+geom_bar(fill=""Chartreuse4"")+theme_bw()  +coord_flip()+labs(title=""Acceptation des détours"")"
-"0",""

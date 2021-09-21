@@ -1,8 +1,0 @@
-"0","knitr::opts_chunk$set(echo = TRUE,include=TRUE, echo=TRUE, message=FALSE, warning=FALSE)"
-"0","library(tidyverse)"
-"0","library(reshape2) #manipuler les fichiers "
-"0","library(gridExtra)"
-"0","library(lme4)"
-"0","library(jtools)"
-"0","library(interactions)"
-"0",""
